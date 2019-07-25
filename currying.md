@@ -34,7 +34,9 @@ function sum (...numbers) {
 
 # What is currying?
 
-Currying is the technique of translating the evaluation of a function that takes multiple arguments into a sequence of functions that take a single argument.
+Currying is the technique of translating the evaluation of a 
+function that takes multiple arguments into a sequence of 
+functions that take a single argument.
 
 ```js
 function add (a) {
@@ -50,7 +52,8 @@ add(1)(2)
 
 # Manual currying
 
-Manual currying is where the developer manually changes the shape of a function using closure.
+Manual currying is where the developer manually changes the 
+shape of a function using closure.
 
 ```js
 function add (a,b) {
@@ -86,7 +89,15 @@ map(inc)([1,2,3,4])
 
 # Partial Application
 
-Partial Application is similar to currying, it is a function that will accept one or more arguments and if all the arguments are not supplied, it will return a function looking for the rest of the arguments. If all the arguments are supplied it will run the function.
+Partial Application is similar to currying, it is a function 
+that will accept one or more arguments and if all the arguments 
+are not supplied, it will return a function looking for the 
+rest of the arguments. If all the arguments are supplied it 
+will run the function.
+
+---
+
+# Partial Application Example
 
 ```js
 function add_three(a,b,c) {
@@ -119,9 +130,12 @@ function add_three(a,b,c) {
 
 # Auto-Currying
 
-Auto Currying is the best of both curry and partial application, auto curry will take arguments one by one or all at the same time or any combination.
+Auto Currying is the best of both curry and partial application, 
+auto curry will take arguments one by one or all at the same 
+time or any combination.
 
-> This is hard to implement and there are libraries that implement this functionality very well. (See Resources)
+> This is hard to implement and there are libraries that implement 
+this functionality very well. (See Resources)
 
 
 ```js
@@ -140,6 +154,8 @@ export const map = curry(function(fn, list) {
 ---
 
 # Demo
+
+https://ramdajs.com/repl/
 
 ---
 

@@ -7,8 +7,8 @@
 * What is a transducer?
 * Where are they useful?
 * Transducers are
-* Example 1
-* Example 2
+* Examples
+* Summary
 * Resources 
 
 ---
@@ -46,6 +46,21 @@ This means that we can compose a map, filter and reduce to create a one pass pip
 
 ---
 
+## Why Transducers
+
+When processing data it is useful to break up the processing into small composable stages.
+
+map > filter > reduce
+
+But when you do this via chaining or with immutable structures, you are creating a copy 
+of data at each stage of the process. With small data this is fine, but with large data
+and live streams, this can be a challenge. Transducers allow you to keep the steps 
+in the process loosely coupled, but compose them into one reducer with one pass,
+so that you do not have create copies of data structures between each step.
+
+
+---
+
 ## Demo
 
 1. map over the numbers and square each number
@@ -67,6 +82,8 @@ const transducer = compose(squareNumbers, keepDiv8s)
 ```js
 const result = into([], transducer, numbers)
 ```
+
+[Example](https://ramdajs.com/repl/?v=0.26.1#?const%20numbers%20%3D%20%5B1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%5D%0Aconst%20squareNumbers%20%3D%20map%28v%20%3D%3E%20v%20%2A%2A%202%29%0Aconst%20keepDiv8s%20%3D%20filter%28v%20%3D%3E%20v%20%25%208%20%3D%3D%3D%200%29%0A%0Aconst%20transducer%20%3D%20compose%28squareNumbers%2C%20keepDiv8s%29%0A%0A%2F%2F%20const%20result%20%3D%20into%28%5B%5D%2C%20transducer%2C%20numbers%29)
 
 ---
 
@@ -95,6 +112,13 @@ const transducer = compose(xMap(v => v * 2), xFilter(v => v % 2 === 0))
 const result = into([], transducer, [2,3,4,5,6,7,9])
 ```
 
+---
+
+## In Summary
+
+Tranducers are higher order functions that return a reducer and can be composed to 
+create single pass pipelines to process large and live data structures while keeping
+the process steps isolated.
 
 ---
 
@@ -103,4 +127,5 @@ const result = into([], transducer, [2,3,4,5,6,7,9])
 
 * https://medium.com/javascript-scene/transducers-efficient-data-processing-pipelines-in-javascript-7985330fe73d
 * https://github.com/getify/Functional-Light-JS/blob/master/manuscript/apA.md/#appendix-a-transducing
+
  
